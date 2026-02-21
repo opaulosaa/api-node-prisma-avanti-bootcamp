@@ -8,7 +8,8 @@ app.use(express.json());
 
 app.get("/", (req, res) => res.send("Servidor rodando"));
 
-app.use("/users", userRoutes);
+app.use('/users', userRoutes);
+// console.log('userRoutes:', userRoutes);
 
 
 const ofertaRoutes = require("./src/modules/ofertas/oferta.routes");
