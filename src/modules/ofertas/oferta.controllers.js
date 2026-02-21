@@ -63,18 +63,22 @@ exports.deleteOfertaController = async (req, res) => {
 };
 
 /**
- * Controller: lista ofertas.
+ * Controller: lista ofertas com filtros.
+ * - Query params: search (título/descrição), categoria, nivel
  * - Retorna 200 com a lista e um count
  */
 exports.listOfertasController = async (req, res) => {
   try {
-    // 1) Busca a lista no service
-    const ofertas = await ofertaService.listOfertas();
+    // 1) Extrai os filtros da query string
+    const { search, categoria, nivel } = req.query;
 
-    // 2) Retorna a lista e a contagem
+    // 2) Busca a lista no service passando os filtros
+    const ofertas = await ofertaService.listOfertas({ search, categoria, nivel });
+
+    // 3) Retorna a lista e a contagem
     return res.status(200).json({ count: ofertas.length, ofertas });
   } catch (error) {
-    // 3) Em caso de erro, responde 400
+    // 4) Em caso de erro, responde 400
     return res.status(400).json({ error: error.message });
   }
 };

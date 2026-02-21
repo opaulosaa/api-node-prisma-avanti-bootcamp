@@ -81,14 +81,39 @@ const deleteOferta = async (id) => {
 };
 
 /**
- * Lista todas as ofertas (Conhecimento).
+ * Lista todas as ofertas (Conhecimento) com filtros opcionais.
  * Traz também o responsável e ordena pelo título.
+ * @param {Object} filters - Filtros de busca
+ * @param {string} filters.search - Busca por título ou descrição
+ * @param {string} filters.categoria - Filtro por categoria
+ * @param {string} filters.nivel - Filtro por nível
  */
-const listOfertas = async () => {
-  // 1) Busca vários registros
-  //    - include: traz o responsável junto
-  //    - orderBy: ordena alfabeticamente pelo título
+const listOfertas = async (filters = {}) => {
+  const { search, categoria, nivel } = filters;
+
+  // Monta os filtros dinamicamente
+  const where = {};
+
+  // Busca por título OU descrição (case-insensitive)
+  if (search) {
+    where.OR = [
+      { titulo: { contains: search, mode: 'insensitive' } },
+      { descricao: { contains: search, mode: 'insensitive' } }
+    ];
+  }
+
+  // Combinação de filtros: categoria e/ou nível
+  if (categoria) {
+    where.categoria = categoria;
+  }
+
+  if (nivel) {
+    where.nivel = nivel;
+  }
+
+  // Busca com filtros aplicados
   return prisma.conhecimento.findMany({
+    where: Object.keys(where).length > 0 ? where : undefined,
     include: { responsavel: true },
     orderBy: { titulo: "asc" },
   });
