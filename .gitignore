@@ -1,5 +1,19 @@
-node_modules
-# Keep environment variables out of version control
-.env
+# Dependências (Pasta pesada)
+node_modules/
 
-/generated/prisma
+# Variáveis de ambiente (Dados sensíveis)
+.env
+.env.local
+
+# Logs de erro e debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Pasta de build (se você usar TypeScript ou React)
+dist/
+build/
+
+# Arquivos do Sistema Operacional
+.DS_Store
+Thumbs.db
