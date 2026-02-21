@@ -1,5 +1,5 @@
 // Importa a instância do PrismaClient (conexão com o banco) configurada no projeto
-const prisma = require("../../config/prisma_db");
+const prisma = require("../config/prisma_db");
 
 /**
  * Cria uma nova "Oferta" (no seu caso, um registro na tabela/model Conhecimento)
@@ -69,14 +69,12 @@ const updateOferta = async (id, data) => {
  * Remove uma oferta existente (Conhecimento) pelo id.
  */
 const deleteOferta = async (id) => {
-  // 1) Confere se existe antes de deletar (mensagem mais amigável)
+ 
   const existing = await prisma.conhecimento.findUnique({ where: { id } });
   if (!existing) throw new Error("Oferta não encontrada.");
 
-  // 2) Deleta o registro do banco
   await prisma.conhecimento.delete({ where: { id } });
 
-  // 3) Retorna uma mensagem padrão para o controller enviar ao cliente
   return { message: "Oferta removida com sucesso" };
 };
 
@@ -91,10 +89,8 @@ const deleteOferta = async (id) => {
 const listOfertas = async (filters = {}) => {
   const { search, categoria, nivel } = filters;
 
-  // Monta os filtros dinamicamente
   const where = {};
 
-  // Busca por título OU descrição (case-insensitive)
   if (search) {
     where.OR = [
       { titulo: { contains: search, mode: 'insensitive' } },
@@ -102,7 +98,6 @@ const listOfertas = async (filters = {}) => {
     ];
   }
 
-  // Combinação de filtros: categoria e/ou nível
   if (categoria) {
     where.categoria = categoria;
   }
@@ -111,7 +106,6 @@ const listOfertas = async (filters = {}) => {
     where.nivel = nivel;
   }
 
-  // Busca com filtros aplicados
   return prisma.conhecimento.findMany({
     where: Object.keys(where).length > 0 ? where : undefined,
     include: { responsavel: true },
@@ -119,5 +113,4 @@ const listOfertas = async (filters = {}) => {
   });
 };
 
-// Exporta as funções do service para serem usadas pelo controller
 module.exports = { createOferta, updateOferta, deleteOferta, listOfertas };
