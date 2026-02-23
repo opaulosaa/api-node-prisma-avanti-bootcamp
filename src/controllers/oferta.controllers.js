@@ -9,6 +9,12 @@ exports.createOfertaController = async (req, res) => {
   }
 };
 
+<<<<<<< HEAD
+=======
+/**
+ * Controller: atualiza uma oferta.
+ */
+>>>>>>> 0061769c8c28721ce0a6fb29a0cbdb3f68e9dc73
 exports.updateOfertaController = async (req, res) => {
   try {   
     const { id } = req.params;
@@ -22,6 +28,12 @@ exports.updateOfertaController = async (req, res) => {
   }
 };
 
+<<<<<<< HEAD
+=======
+/**
+ * Controller: remove uma oferta pelo id.
+ */
+>>>>>>> 0061769c8c28721ce0a6fb29a0cbdb3f68e9dc73
 exports.deleteOfertaController = async (req, res) => {
   try {
     const { id } = req.params;
@@ -35,6 +47,12 @@ exports.deleteOfertaController = async (req, res) => {
   }
 };
 
+<<<<<<< HEAD
+=======
+/**
+ * Controller: lista ofertas com filtros.
+ */
+>>>>>>> 0061769c8c28721ce0a6fb29a0cbdb3f68e9dc73
 exports.listOfertasController = async (req, res) => {
   try {
    
