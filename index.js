@@ -1,4 +1,6 @@
 const express = require("express");
+const cors = require("cors");
+
 const userRoutes = require("./src/routes/users");
 const ofertaRoutes = require("./src/routes/oferta.routes");
 
@@ -7,8 +9,15 @@ const PORT = 3000;
 
 app.use(express.json());
 
-// Rotas
-app.use('/users', userRoutes);
+app.use(
+  cors({
+    origin: "http://localhost:5173", // Vite
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
+
+app.use("/users", userRoutes);
 app.use("/ofertas", ofertaRoutes);
 
 app.get("/", (req, res) => res.send("API Banco de Trocas Rodando 🚀"));
