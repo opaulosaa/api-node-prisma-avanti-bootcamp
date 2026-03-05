@@ -1,9 +1,6 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
   output   = "../node_modules/.prisma/client"
@@ -13,21 +10,41 @@ datasource db {
   provider = "postgresql"
 }
 
+enum Role {
+  USER
+  ADMIN
+}
+
+enum TipoUsuario {
+  ALUNO
+  ESPECIALISTA
+}
+
 model Pessoa {
-  id        String         @id @default(uuid())
-  nome      String         
-  email     String         @unique
-  telefone  String         
-  descricao String?       
-  ofertas   Conhecimento[]
+  id                    String         @id @default(uuid())
+  nome                  String
+  email                 String         @unique
+  senha                 String
+  cpf                   String?
+  telefone              String
+  descricao             String?
+  foto                  String?
+  role                  Role           @default(USER)
+  tipoUsuario           TipoUsuario    @default(ALUNO)
+  // Campos profissionais (apenas para ESPECIALISTA)
+  areaAtuacao           String?
+  uf                    String?
+  linkPortfolio         String?
+  especialidadePrincipal String?
+  ofertas               Conhecimento[]
 }
 
 model Conhecimento {
   id          String   @id @default(uuid())
-  titulo      String  
-  descricao   String  
-  categoria   String   
-  nivel       String   
-  pessoa_id   String   
+  titulo      String
+  descricao   String
+  categoria   String
+  nivel       String
+  pessoa_id   String
   responsavel Pessoa   @relation(fields: [pessoa_id], references: [id])
 }
