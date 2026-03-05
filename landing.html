@@ -34,13 +34,12 @@
 </head>
 <body class="p-0 m-0">
 
-    <!-- Cabeçalho Simples -->
     <header class="header-box">
         <h1 class="text-3xl font-bold">ConectaSaber</h1>
         <p>Site para trocar conhecimentos</p>
     </header>
 
-    <!-- Menu Básico -->
+
     <nav class="bg-gray-800 text-white p-2 flex justify-center gap-4 text-sm">
         <a href="#inicio" class="underline">Início</a>
         <a href="#ofertas" class="underline">Ofertas</a>
@@ -58,7 +57,6 @@
             </button>
         </section>
 
-        <!-- Filtro Básico -->
         <section id="ofertas" class="mb-6">
             <h2 class="section-title">O que tem pra aprender:</h2>
             <div class="flex gap-2 overflow-x-auto pb-2 mb-4">
@@ -67,13 +65,13 @@
                 <button onclick="filtrar('TI')" class="bg-gray-300 px-3 py-1 text-sm border border-black">T.I.</button>
             </div>
 
-            <!-- Lista de itens -->
+       
             <div id="lista-ofertas">
                 <!-- Vai ser preenchido pelo JS -->
             </div>
         </section>
 
-        <!-- Como funciona -->
+     
         <section class="bg-yellow-100 p-4 border-2 border-yellow-400 mb-6">
             <h2 class="font-bold text-xl mb-2">Como usar?</h2>
             <ol class="list-decimal ml-5">
@@ -83,14 +81,14 @@
             </ol>
         </section>
 
-        <!-- Rodapé -->
+       
         <footer class="text-center text-xs text-gray-500 py-8 border-t border-gray-300">
             <p>ConectaSaber - 2026</p>
         </footer>
     </main>
 
     <script>
-        // Dados bem básicos
+       
         const dados = [
             { nome: "Tocar Violão", cat: "Musica", desc: "Ensino o básico de acordes." },
             { nome: "Fazer Site", cat: "TI", desc: "Ensino a fazer um site igual esse." },
@@ -122,7 +120,7 @@
             }
         }
 
-        // Inicia a lista
+       
         montarLista(dados);
     </script>
 </body>
