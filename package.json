@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-<<<<<<< HEAD
   "dependencies": {
     "@prisma/adapter-pg": "^7.4.1",
     "@prisma/adapter-ppg": "^7.4.1",
@@ -79,9 +78,6 @@
     "vary": "^1.1.2",
     "wrappy": "^1.0.2"
   },
-=======
-  "type": "commonjs",
->>>>>>> main
   "scripts": {
     "start": "nodemon index.js",
     "dev": "nodemon index.js"
