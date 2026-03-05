@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+<<<<<<< HEAD
   "dependencies": {
     "@prisma/adapter-pg": "^7.4.1",
     "@prisma/adapter-ppg": "^7.4.1",
@@ -78,14 +79,31 @@
     "vary": "^1.1.2",
     "wrappy": "^1.0.2"
   },
+=======
+  "type": "commonjs",
+>>>>>>> main
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "dev": "nodemon index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "dependencies": {
+    "@prisma/adapter-pg": "^7.4.1",
+    "@prisma/client": "^7.4.1",
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "pg": "^8.18.0",
+    "uuid": "^13.0.0"
+  },
   "devDependencies": {
-    "nodemon": "^3.1.11"
+    "dotenv": "^17.3.1",
+    "nodemon": "^3.1.14",
+    "prisma": "^7.4.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
   }
 }

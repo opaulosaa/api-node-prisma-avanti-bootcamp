@@ -21,6 +21,7 @@ enum TipoUsuario {
 }
 
 model Pessoa {
+<<<<<<< HEAD
   id                    String         @id @default(uuid())
   nome                  String
   email                 String         @unique
@@ -37,6 +38,15 @@ model Pessoa {
   linkPortfolio         String?
   especialidadePrincipal String?
   ofertas               Conhecimento[]
+=======
+  id        String         @id @default(uuid())
+  nome      String         
+  email     String         @unique
+  senha     String
+  telefone  String         
+  descricao String?       
+  ofertas   Conhecimento[]
+>>>>>>> main
 }
 
 model Conhecimento {
